@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>一些好用的命令和工具</title>
+      <link href="/blog/2021/09/18/%E4%B8%80%E4%BA%9B%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4%E5%92%8C%E5%B7%A5%E5%85%B7/"/>
+      <url>/blog/2021/09/18/%E4%B8%80%E4%BA%9B%E5%A5%BD%E7%94%A8%E7%9A%84%E5%91%BD%E4%BB%A4%E5%92%8C%E5%B7%A5%E5%85%B7/</url>
+      
+        <content type="html"><![CDATA[<h1 id="工作中能提高效率的命令和工具"><a href="#工作中能提高效率的命令和工具" class="headerlink" title="工作中能提高效率的命令和工具"></a>工作中能提高效率的命令和工具</h1><h2 id="tldr"><a href="#tldr" class="headerlink" title="tldr"></a>tldr</h2><p>摘要：too long, don’t read(tldr)</p><p>好用之处：见名知意，在类Unix系统中一个非常重要的命令<code>man</code>，是大家每天工作都离不来的。但是，它所呈现的文档太详细，太长，导致我们无法高效的查询常用的命令。所谓的二八定律，被这个命令很好的诠释。</p><p>用法：tldr [命令]</p><p>官网：<a href="https://tldr.sh/">https://tldr.sh/</a></p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 生活 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 笔记 </tag>
+            
+            <tag> 命令 </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>野指针</title>
       <link href="/blog/2021/08/20/%E9%87%8E%E6%8C%87%E9%92%88/"/>
       <url>/blog/2021/08/20/%E9%87%8E%E6%8C%87%E9%92%88/</url>
