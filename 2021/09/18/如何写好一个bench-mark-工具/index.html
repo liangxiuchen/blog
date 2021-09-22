@@ -443,7 +443,7 @@
                 
                 <div class="info-break-policy">
                     <i class="far fa-file-word fa-fw"></i>文章字数:&nbsp;&nbsp;
-                    355
+                    357
                 </div>
                 
 
@@ -492,7 +492,7 @@
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 
 <p>header 文件里面，在DEBUG环境下需要说明的是<code>__attribute__((__format__(printf, 2, 3)))</code>.  这个是编译器属性，可以提示编译器去检查<code>(&quot;%s,%d&quot;,&quot;hello&quot;,1)</code>类型匹配问题，同时给出warning.在RELEASE环境下，<code>bench_mark</code>函数会替换成一个宏，做到只执行工程中的代码，这样就剥离了时间测试相关的代码， 做到无入侵。</p>
-<h3 id="bench-mark-m"><a href="#bench-mark-m" class="headerlink" title="bench_mark.m"></a>bench_mark.m</h3><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">import</span> <span class="token string">"ZMSIPBenchMark.h"</span></span>
+<h3 id="bench-mark-m"><a href="#bench-mark-m" class="headerlink" title="bench_mark.m"></a>bench_mark.m</h3><pre class="line-numbers language-c" data-language="c"><code class="language-c"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">import</span> <span class="token string">"bench_mark.h"</span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifdef</span> <span class="token expression">DEBUG</span></span>
 <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">ifdef</span> <span class="token expression">__GNUC__</span></span>
     <span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">define</span> <span class="token macro-name function">likely</span><span class="token expression"><span class="token punctuation">(</span>x<span class="token punctuation">)</span> <span class="token function">__builtin_expect</span><span class="token punctuation">(</span><span class="token operator">!</span><span class="token operator">!</span><span class="token punctuation">(</span>x<span class="token punctuation">)</span><span class="token punctuation">,</span> <span class="token number">1</span><span class="token punctuation">)</span></span></span>
@@ -505,6 +505,7 @@
         va_list ap<span class="token punctuation">;</span>
         <span class="token function">va_start</span><span class="token punctuation">(</span>ap<span class="token punctuation">,</span> format<span class="token punctuation">)</span><span class="token punctuation">;</span>
         <span class="token function">vsprintf</span><span class="token punctuation">(</span>buffer<span class="token punctuation">,</span> format<span class="token punctuation">,</span> ap<span class="token punctuation">)</span><span class="token punctuation">;</span>
+        <span class="token function">va_end</span><span class="token punctuation">(</span>ap<span class="token punctuation">)</span><span class="token punctuation">;</span>
     <span class="token punctuation">&#125;</span>
     
     CFAbsoluteTime start <span class="token operator">=</span> <span class="token function">CFAbsoluteTimeGetCurrent</span><span class="token punctuation">(</span><span class="token punctuation">)</span><span class="token punctuation">;</span>
@@ -516,10 +517,10 @@
     <span class="token function">NSLog</span><span class="token punctuation">(</span>@<span class="token string">"Used time:(%.2lfs)-(%.5lfms) %s"</span><span class="token punctuation">,</span> delta<span class="token punctuation">,</span> delta <span class="token operator">*</span> <span class="token number">1000</span><span class="token punctuation">,</span> buffer<span class="token punctuation">)</span><span class="token punctuation">;</span>
 <span class="token punctuation">&#125;</span>
 
-<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
+<span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">endif</span></span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre>
 <p>.m文件里面需要说明下，为什么加入likely。在bench_mark的使用场景下，block为nil的概率是零。这样可以充分利用CPU的冒险机制，做到更准的测试task中的运行时间。</p>
 <h2 id="用法"><a href="#用法" class="headerlink" title="用法"></a>用法</h2><pre class="line-numbers language-objc" data-language="objc"><code class="language-objc">bench_mark(^&#123;
-    [self test];
+    [self logicCode];
 &#125;, &quot;%s, %s&quot;,&quot;&gt;&gt; as filter key work&quot;, __FILE__);
 bench_mark(nil,&quot;Hi, boy~&quot;);
 bench_mark(nil,nil);
