@@ -4,6 +4,33 @@
   
     
     <entry>
+      <title>C++ new操作符号的一些探索</title>
+      <link href="/blog/2021/09/24/new%E6%93%8D%E4%BD%9C%E7%AC%A6%E5%8F%B7%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8E%A2%E7%B4%A2/"/>
+      <url>/blog/2021/09/24/new%E6%93%8D%E4%BD%9C%E7%AC%A6%E5%8F%B7%E7%9A%84%E4%B8%80%E4%BA%9B%E6%8E%A2%E7%B4%A2/</url>
+      
+        <content type="html"><![CDATA[<h1 id="new和delete-new-和delete"><a href="#new和delete-new-和delete" class="headerlink" title="new和delete new[]和delete[]"></a>new和delete new[]和delete[]</h1><h2 id="new-和-delete"><a href="#new-和-delete" class="headerlink" title="new 和 delete"></a>new 和 delete</h2><p>在C++中，new和delete是配对使用的。这两个操作符的作用是用来动态分配单个类型的对象。如果new 一个类对象，C++语言会自动插入默认构造函数的调用代码， delete一个类对象，C++语言会自动插入析构函数的调用代码。所以，如果这个类对象有继承关系，析构函数必须实现成虚函数（避免基类对象指针指向子类的时候，调用delete操作，如果析构函数不是虚函数，就只会调用基类的析构函数，子类就无法析构了）。</p><h2 id="new-和-delete-1"><a href="#new-和-delete-1" class="headerlink" title="new[] 和 delete[]"></a>new[] 和 delete[]</h2><p>为什么C++中有个new 和 delete后，为什么还来一对new[] 和 delete[]? 请看下面代码：</p><pre class="line-numbers language-cpp" data-language="cpp"><code class="language-cpp"><span class="token macro property"><span class="token directive-hash">#</span><span class="token directive keyword">include</span> <span class="token string">&lt;iostream></span></span><span class="token keyword">class</span> <span class="token class-name">A</span> <span class="token punctuation">&#123;</span><span class="token keyword">public</span><span class="token operator">:</span>    <span class="token function">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"hello"</span><span class="token operator">&lt;&lt;</span>std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span>    <span class="token operator">~</span><span class="token function">A</span><span class="token punctuation">(</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>        std<span class="token double-colon punctuation">::</span>cout <span class="token operator">&lt;&lt;</span> <span class="token string">"destruct"</span><span class="token operator">&lt;&lt;</span> std<span class="token double-colon punctuation">::</span>endl<span class="token punctuation">;</span>    <span class="token punctuation">&#125;</span><span class="token punctuation">&#125;</span><span class="token punctuation">;</span><span class="token keyword">int</span> <span class="token function">main</span><span class="token punctuation">(</span><span class="token keyword">int</span> argc<span class="token punctuation">,</span> <span class="token keyword">const</span> <span class="token keyword">char</span> <span class="token operator">*</span> argv<span class="token punctuation">[</span><span class="token punctuation">]</span><span class="token punctuation">)</span> <span class="token punctuation">&#123;</span>    A <span class="token operator">*</span>a <span class="token operator">=</span> <span class="token keyword">new</span> A<span class="token punctuation">[</span><span class="token number">100</span><span class="token punctuation">]</span><span class="token punctuation">;</span>    A <span class="token operator">*</span>b <span class="token operator">=</span> <span class="token keyword">new</span> A<span class="token punctuation">;</span>    <span class="token comment">// delete a; malloc: *** error for object 0x101009208: pointer being freed was not allocated</span>    <span class="token keyword">delete</span> <span class="token punctuation">(</span>A<span class="token operator">*</span><span class="token punctuation">)</span><span class="token punctuation">(</span><span class="token punctuation">(</span><span class="token keyword">uint64_t</span><span class="token punctuation">)</span>a <span class="token operator">-</span> <span class="token number">8</span><span class="token punctuation">)</span><span class="token punctuation">;</span>    <span class="token keyword">return</span> <span class="token number">0</span><span class="token punctuation">;</span><span class="token punctuation">&#125;</span><span aria-hidden="true" class="line-numbers-rows"><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span><span></span></span></code></pre><p>调用 <code>delete a</code>代码执行时候，会奔溃。 调用<code>delete (A*)((uint64_t)a - 8)</code>,可以正常析构数组的第一个A对象，后面99对象没有调用析构函数，只是被底层的free 函数回收了内存。</p><p>在我的x86_64 MAC电脑上，C++在调用new[]操作符号时候，会多分配一个8字节的空间，用来存放数着的size。然后把底层malloc函数返回的指针值加8后返回给我们代码。这样，用户调用 delete[]操作符号时候，会取出size，然后迭代进行析构，再减8字节后调用free释放内存。</p>]]></content>
+      
+      
+      <categories>
+          
+          <category> 语言 </category>
+          
+      </categories>
+      
+      
+        <tags>
+            
+            <tag> 笔记 </tag>
+            
+            <tag> C++ </tag>
+            
+        </tags>
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>如何写好一个bench_mark工具</title>
       <link href="/blog/2021/09/18/%E5%A6%82%E4%BD%95%E5%86%99%E5%A5%BD%E4%B8%80%E4%B8%AAbench-mark-%E5%B7%A5%E5%85%B7/"/>
       <url>/blog/2021/09/18/%E5%A6%82%E4%BD%95%E5%86%99%E5%A5%BD%E4%B8%80%E4%B8%AAbench-mark-%E5%B7%A5%E5%85%B7/</url>
@@ -38,7 +65,7 @@
       
       <categories>
           
-          <category> 生活 </category>
+          <category> 工具 </category>
           
       </categories>
       
@@ -72,9 +99,9 @@
       
         <tags>
             
-            <tag> C </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> C </tag>
             
         </tags>
       
