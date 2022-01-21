@@ -4,6 +4,19 @@
   
     
     <entry>
+      <title>英语语法体系</title>
+      <link href="/blog/2022/01/21/%E8%8B%B1%E8%AF%AD%E8%AF%AD%E6%B3%95%E4%BD%93%E7%B3%BB/"/>
+      <url>/blog/2022/01/21/%E8%8B%B1%E8%AF%AD%E8%AF%AD%E6%B3%95%E4%BD%93%E7%B3%BB/</url>
+      
+        <content type="html"><![CDATA[<h2 id="英语语法体系笔记"><a href="#英语语法体系笔记" class="headerlink" title="英语语法体系笔记"></a>英语语法体系笔记</h2><p>语法的目的:用来造句。 句子结构：主语（subject）+谓语(predicate)（表达都是什么怎么样）,其中主语就是人/物，可以是具体的也可以是抽象的。谓语部分最主要的就是动作（动词）。</p><ol><li>可以独立完成的动作[主语+不及物动词)]</li><li>有1个动作的承受者[主语+单及物动词+宾语]</li><li>由2个动作的承受者[主语+双及物动词+间接宾语+直接宾语]</li><li>只有一个动作承受者（但需补充)[主语+复杂及物动词+宾语+（宾语）补语]</li><li>非”动作”（系动词：其中系就是把主语和谓语部分等价联系起来）[主语+系动词+主语补语/表语]</li></ol><h5 id="请注意谓语-不等于-谓语动词，谓语动词只是谓语的一部分，谓语包含谓语动词，为什么强调谓语动词，因为英语语法中还有非谓语动词"><a href="#请注意谓语-不等于-谓语动词，谓语动词只是谓语的一部分，谓语包含谓语动词，为什么强调谓语动词，因为英语语法中还有非谓语动词" class="headerlink" title="请注意谓语 不等于 谓语动词，谓语动词只是谓语的一部分，谓语包含谓语动词，为什么强调谓语动词，因为英语语法中还有非谓语动词"></a>请注意<code>谓语 不等于 谓语动词</code>，谓语动词只是谓语的一部分，谓语包含谓语动词，为什么强调谓语动词，因为英语语法中还有非谓语动词</h5><h2 id="简单句的句子成分"><a href="#简单句的句子成分" class="headerlink" title="简单句的句子成分"></a>简单句的句子成分</h2><ol><li>主语</li><li>谓语动词</li><li>宾语</li><li>宾语补语</li><li>主语补语（表语）</li><li>定语（attributive 主要用来修饰主语或者宾语）</li><li>状语（主要用来修饰谓语动词）</li><li>同位语</li></ol><p>这里举例子<br>定语：(1.The little white )rabbit ate (2.a large )carrot.这里1就是主语rabbit的定语，2就是宾语carrot的定语<br>状语：The rabbit ate (quickly),这里的quickly就是修饰ate的状语<br>同位语：Papa Rabbit， an english teacher eats carrots.这里的an english teacher其实就是把Papa Rabbit 用不同方式说一遍，在这里算是和主语同等地位</p><h2 id="并列句和复合句"><a href="#并列句和复合句" class="headerlink" title="并列句和复合句"></a>并列句和复合句</h2><p>以上都是简单句的句子成分，日常生活中句子都是由简单句组合或者递归(套娃)而成，现在我们说下并列句，就是由简单句用连接词连接而成。复合句中各个句子成分都可以有简单句，套娃而成。举例子简单句前套在如下成分中：</p><ol><li>作主语-&gt;主语从句</li><li>作宾语-&gt;宾语从句</li><li>作表语-&gt;表语从句</li><li>作同位语-&gt;同位语从句</li><li>作定语-&gt;定语从句</li><li>作状语-&gt;状语从句</li></ol><h2 id="词性（词类）"><a href="#词性（词类）" class="headerlink" title="词性（词类）"></a>词性（词类）</h2><ol><li>名词 表人和物</li><li>冠词 说明人和物</li><li>代词 替代人和物</li><li>形容词 形容人和物</li><li>数词 表数量</li><li>副词 修饰动词或形容词等</li><li>介词 prepositions 表示和其他词关系的词 I ate two carrots with chopsticks</li><li>叹词 表感叹</li><li>连词 连接词和句子</li><li>动词</li></ol><p>谓语动词的“三大本领”</p><ol><li>动作时间：现在，过去，将来，过去将来</li><li>动作的状态：一般，进行，完成<br>以上2者合在一起叫做时态</li><li>动作假设，情感..（语气）例如虚拟语气</li></ol><p>谓语动词：时，体，气。注意，英语中动词一般无法独立完成“时，体，气”，而需要一类特殊的动词协助完成，它就是<code>助动词</code></p><p>非谓语动词：动词不定式(to eat or not to eat),现在分词（Eating carrots is healthy),动名词（eating), 过去分词（eaten）</p><h2 id="参考"><a href="#参考" class="headerlink" title="参考"></a>参考</h2><p>英语兔 <a href="http://www.yingyutu.com/">http://www.YingYuTu.com</a></p>]]></content>
+      
+      
+      
+    </entry>
+    
+    
+    
+    <entry>
       <title>C语言5个面试问题</title>
       <link href="/blog/2022/01/18/C%E8%AF%AD%E8%A8%805%E4%B8%AA%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98/"/>
       <url>/blog/2022/01/18/C%E8%AF%AD%E8%A8%805%E4%B8%AA%E9%9D%A2%E8%AF%95%E9%97%AE%E9%A2%98/</url>
@@ -191,9 +204,9 @@
       
         <tags>
             
-            <tag> C </tag>
-            
             <tag> C++ </tag>
+            
+            <tag> C </tag>
             
         </tags>
       
